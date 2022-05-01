@@ -33,3 +33,6 @@ def home(request):
     Age = database.child('Data').child('Age').get().val()
     Height = database.child('Data').child('Height').get().val()
     return render(request, "index.html", {"Name": [Marcus, Chad, Ilan], "Age": Age, "Height": Height})
+
+def postsign(request):
+    pass

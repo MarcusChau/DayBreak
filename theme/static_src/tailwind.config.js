@@ -18,13 +18,13 @@ module.exports = {
          * Main templates directory of the project (BASE_DIR/templates).
          * Adjust the following line to match your project structure.
          */
-        '../../templates/**/*.html',
+        '../../templates/**/*.{html,js}',
         
         /* 
          * Templates in other django apps (BASE_DIR/<any_app_name>/templates).
          * Adjust the following line to match your project structure.
          */
-        '../../**/templates/**/*.html',
+        '../../**/templates/**/*.{html,js}',
 
         /**
          * JS: If you use Tailwind CSS in JavaScript, uncomment the following lines and make sure
@@ -42,10 +42,21 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
-    },
-    fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        extend: {
+            colors: {
+                transparent: 'transparent',
+                current : 'currentColor',
+                'white' : '#ffffff',
+                'black' : '#000000',
+                'cyan' : {
+                    500 : '#65A2A2',
+                    900 : '#125244',
+                },
+            },
+            fontFamily: {
+                sans: ['Poppins', 'sans-serif'],
+            },
+        },
     },
     plugins: [
         /**

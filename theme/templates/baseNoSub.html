@@ -21,11 +21,11 @@
 		<!-- Navbar goes here -->
         <header class="ml-4 mr-4">
             <nav class="text-lg text-gray-700 bg-white pl-8 pr-8 flow-root">
-				<div class="flex flex-wrap items-center justify-between  md:gap-auto md:py-0">
+				<div class="flex flex-wrap items-center justify-between md:grid md:grid-cols-2 md:gap-auto md:py-0">
 
 					<!-- Logo -->
 					<div class="text-center">
-						<div class="md:p-4 py-2 text-2xl">
+						<div class="md:p-4 py-2 text-2xl md:grid md:grid-cols-2">
 							<a class="font-bold" href="/">Day <span class="text-cyan-500">Break</span></a>
 						</div>
 					</div>
@@ -55,15 +55,6 @@
 								</li>
 							</ul>
 						</div>
-						
-						<!-- Subscribe button -->
-						<div class="md:ml-12">
-							<a class="flex flex-wrap font-normal items-center justify-center px-4 md:px-4 py-2 block hover:shadow-md bg-cyan-100 text-cyan-900 border-1 rounded-full" href="form.html">
-								{% load static %}
-								<img class="h-7 w-6 items-center p-0 m-0" src="{% static 'img/plane_icon.png' %}" alt="plane icon"/>Subscribe
-							</a>
-						</div>
-						
 					</div>
 					
 				</div>

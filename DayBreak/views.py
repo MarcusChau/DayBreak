@@ -36,3 +36,6 @@ def home(request):
 
 def postsign(request):
     pass
+
+def form(request):
+    return render(request, "form.html")

@@ -27,12 +27,12 @@ database = firebase.database()
 
 
 def home(request):
-    Marcus = database.child('Data').child('Name').child('1').get().val()
-    Chad = database.child('Data').child('Name').child('2').get().val()
-    Ilan = database.child('Data').child('Name').child('3').get().val()
-    Age = database.child('Data').child('Age').get().val()
-    Height = database.child('Data').child('Height').get().val()
-    return render(request, "index.html", {"Name": [Marcus, Chad, Ilan], "Age": Age, "Height": Height})
+    #Marcus = database.child('Data').child('Name').child('1').get().val()
+    #Chad = database.child('Data').child('Name').child('2').get().val()
+    #Ilan = database.child('Data').child('Name').child('3').get().val()
+    #Age = database.child('Data').child('Age').get().val()
+    #Height = database.child('Data').child('Height').get().val()
+    return render(request, "index.html") #{"Name": [Marcus, Chad, Ilan], "Age": Age, "Height": Height})
 
 def postsign(request):
     pass

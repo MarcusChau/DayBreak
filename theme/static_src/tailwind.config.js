@@ -43,6 +43,7 @@ module.exports = {
     ],
     theme: {
         extend: {
+            // Colors
             colors: {
                 transparent: 'transparent',
                 current : 'currentColor',
@@ -54,9 +55,24 @@ module.exports = {
                     900 : '#125244',
                 },
             },
+            // Font
             fontFamily: {
                 sans: ['Poppins', 'sans-serif'],
             },
+            // Animation
+            animation: {
+                fade: 'fadeOut 5s ease-in-out',
+            },
+            keyframes: theme => ({
+                fadeout: {
+                    '0%' : {
+                        opacity: 0
+                    },
+                    '100%' : {
+                        opacity: 1
+                    }
+                }
+            })
         },
     },
     plugins: [

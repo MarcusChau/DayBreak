@@ -5,6 +5,8 @@
  * https://unpkg.com/browse/tailwindcss@latest/stubs/defaultConfig.stub.js
  */
 
+const tailwindcss = require('tailwindcss');
+
 module.exports = {
     content: [
         /**
@@ -53,7 +55,7 @@ module.exports = {
                     100 : '#ACE4E4',
                     500 : '#65A2A2',
                     900 : '#125244',
-                },
+                }, 
             },
             // Font
             fontFamily: {

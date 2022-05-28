@@ -34,8 +34,16 @@ def home(request):
     #Height = database.child('Data').child('Height').get().val()
     return render(request, "index.html") #{"Name": [Marcus, Chad, Ilan], "Age": Age, "Height": Height})
 
-def postsign(request):
-    pass
+def postsignUp(request):
+    email = request.POST.get('email')
+    id = str(email).split('@')[0]
+    data = {
+        id: {
+            "email": email,
+            },
+    }
+    database.child("users").set(data)
+    return render(request, "form.html")
 
 def form(request):
     return render(request, "form.html")

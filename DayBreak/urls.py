@@ -20,7 +20,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
-    path('postsign', views.postsign),
     path("__reload__/", include("django_browser_reload.urls")),
     path('form.html/', views.form),
+    path('postsignUp/', views.postsignUp),
 ]

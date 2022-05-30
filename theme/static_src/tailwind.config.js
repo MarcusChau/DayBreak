@@ -6,6 +6,7 @@
  */
 
 const tailwindcss = require('tailwindcss');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
     content: [
@@ -44,19 +45,19 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
+        // Colors
+        colors: {
+            transparent: 'transparent',
+            current : 'currentColor',
+            'white' : '#ffffff',
+            'black' : '#000000',
+            'cyan' : {
+                100 : '#ACE4E4',
+                500 : '#65A2A2',
+                900 : '#125244',
+            }, 
+        },
         extend: {
-            // Colors
-            colors: {
-                transparent: 'transparent',
-                current : 'currentColor',
-                'white' : '#ffffff',
-                'black' : '#000000',
-                'cyan' : {
-                    100 : '#ACE4E4',
-                    500 : '#65A2A2',
-                    900 : '#125244',
-                }, 
-            },
             // Font
             fontFamily: {
                 sans: ['Poppins', 'sans-serif'],

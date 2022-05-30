@@ -1,5 +1,13 @@
+from asyncio.windows_events import NULL
+from django.conf import settings
+from django.forms import NullBooleanField
 from django.shortcuts import render
+from pyparsing import nullDebugAction
 import pyrebase
+from django.core import mail
+#from django.core.mail import EmailMultiAlternatives, send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 # # Import the functions you need from the SDKs you need
 #     #import { initializeApp } from "firebase/app";
@@ -32,18 +40,52 @@ def home(request):
     #Ilan = database.child('Data').child('Name').child('3').get().val()
     #Age = database.child('Data').child('Age').get().val()
     #Height = database.child('Data').child('Height').get().val()
-    return render(request, "index.html") #{"Name": [Marcus, Chad, Ilan], "Age": Age, "Height": Height})
+    # {"Name": [Marcus, Chad, Ilan], "Age": Age, "Height": Height})
+    return render(request, "index.html")
+
 
 def postsignUp(request):
     email = request.POST.get('email')
-    id = str(email).split('@')[0]
-    data = {
-        id: {
-            "email": email,
-            },
-    }
-    database.child("users").set(data)
-    return render(request, "form.html")
+    id = database.generate_key()
+    all_users = database.child("users").get()
+    tempVal = True
+    try:
+        for user in all_users.each():
+            if(user.val()["Email"] == email):
+                tempVal = False
+                break
+    finally:
+        if tempVal:
+            #id = str(email).split('@')[0]
+            data = {
+                "Email": email
+            }
+            database.child("users").child(id).set(data)
+
+            # Welcome email
+            html_render = render_to_string('Welcome.html')
+            text_content = strip_tags(html_render)
+            # email = EmailMultiAlternatives(
+            #    "Welcome",
+            #    text_content,
+            #    settings.EMAIL_HOST_USER,
+            #    [email]
+            # )
+            subject, from_email, to = "Welcome to DayBreak", settings.EMAIL_HOST_USER, email
+            #email.attach_alternative(html_render, "text/html")
+            # email.send()
+            mail.send_mail(subject, text_content, from_email,
+                           [to], html_message=html_render)
+
+            return render(request, "form.html")
+
+        else:
+            return render(request, "form.html")
+
 
 def form(request):
     return render(request, "form.html")
+
+
+def Post(self, request, format=None):
+    pass

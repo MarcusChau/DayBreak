@@ -45,38 +45,45 @@ def home(request):
 
 
 def postsignUp(request):
+    # getting email from the html file
     email = request.POST.get('email')
+    # generating a random key that will be used as the ID
     id = database.generate_key()
+    # getting all users from the database through their perspective unique IDs
     all_users = database.child("users").get()
+    # setting a holder boolean statement that will be used as a check later
     tempVal = True
+
     try:
+        # this can be updated for better efficiency later on through other search methods
+        # looping through all the users in the database through a for each loop
         for user in all_users.each():
+            # Same email Validation
             if(user.val()["Email"] == email):
+                # changes the boolean if the email is there already
                 tempVal = False
                 break
     finally:
         if tempVal:
-            #id = str(email).split('@')[0]
+            # Data that will be put into the database
             data = {
                 "Email": email
             }
+            # Data inputted into the database
             database.child("users").child(id).set(data)
 
-            # Welcome email
+            # Welcome email automation
             html_render = render_to_string('Welcome.html')
             text_content = strip_tags(html_render)
-            # email = EmailMultiAlternatives(
-            #    "Welcome",
-            #    text_content,
-            #    settings.EMAIL_HOST_USER,
-            #    [email]
-            # )
+
+            # Variables for the email automation
             subject, from_email, to = "Welcome to DayBreak", settings.EMAIL_HOST_USER, email
-            #email.attach_alternative(html_render, "text/html")
-            # email.send()
+
+            # send mail
             mail.send_mail(subject, text_content, from_email,
                            [to], html_message=html_render)
 
+            # rendering selected html file
             return render(request, "form.html")
 
         else:

@@ -124,9 +124,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
+# Email
+EMAIL_HOST = "smtp.gmail.com"  # gmail host email
+EMAIL_PORT = 587  # gmail email port
 EMAIL_USE_TLS = True
+
+# chosen email that will be used
 EMAIL_HOST_USER = "noreplyemail.daybreak@gmail.com"
 EMAIL_HOST_PASSWORD = "mykftgywgddimnax"
 

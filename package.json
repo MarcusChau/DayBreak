@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.0.24"
+  },
+  "scripts": {
+    "start": "node your-script.js"
   }
 }
